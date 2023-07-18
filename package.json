@@ -1,0 +1,16 @@
+{
+  "name": "rust_camp_tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:DragonOS-Community/rust_camp_tutorial.git",
+  "author": "kong <376634352@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.9.9"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  }
+
+}
