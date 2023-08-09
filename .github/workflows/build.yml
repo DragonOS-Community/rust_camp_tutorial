@@ -40,6 +40,6 @@ jobs:
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
-        deploy_key: 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
+        deploy_key: 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
         publish_dir: ./docs/.vuepress/dist
 
