@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Rust 入门教程（二）：结构体和枚举 | Rust训练营教程文档</title>
+    <meta name="generator" content="VuePress 1.9.9">
+    <link rel="icon" href="/rust_camp_tutorial/logo.png">
+    <meta name="description" content="DragonOS-Rust camp">
+    
+    <link rel="preload" href="/rust_camp_tutorial/assets/css/0.styles.afe790d8.css" as="style"><link rel="preload" href="/rust_camp_tutorial/assets/js/app.70f79682.js" as="script"><link rel="preload" href="/rust_camp_tutorial/assets/js/2.733019b2.js" as="script"><link rel="preload" href="/rust_camp_tutorial/assets/js/10.92bf8704.js" as="script"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/11.b2c4998b.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/12.f542fbae.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/13.1767824a.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/14.8a8647bc.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/3.29ddc053.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/4.d12742be.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/5.216cae74.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/6.2d0a63f8.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/7.b58d0192.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/8.45b4c594.js"><link rel="prefetch" href="/rust_camp_tutorial/assets/js/9.d7492196.js">
+    <link rel="stylesheet" href="/rust_camp_tutorial/assets/css/0.styles.afe790d8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/rust_camp_tutorial/" class="home-link router-link-active"><img src="logo.png" alt="Rust训练营教程文档" class="logo"> <span class="site-name can-hide">Rust训练营教程文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/rust_camp_tutorial/" class="nav-link">
+  首页
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/rust_camp_tutorial/" class="nav-link">
+  首页
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Rust 入门教程（二）：结构体和枚举</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#一、结构体的使用" class="sidebar-link">一、结构体的使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_1-定义和实例化-struct" class="sidebar-link">1. 定义和实例化 struct</a></li><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_2-struct-例子" class="sidebar-link">2. struct 例子</a></li><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_3-struct-方法" class="sidebar-link">3. struct 方法</a></li></ul></li><li><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#二、枚举与模式匹配" class="sidebar-link">二、枚举与模式匹配</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_1-枚举的定义" class="sidebar-link">1. 枚举的定义</a></li><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_2-option-枚举" class="sidebar-link">2. Option 枚举</a></li><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_3-match" class="sidebar-link">3. match</a></li><li class="sidebar-sub-header"><a href="/rust_camp_tutorial/Rust%E6%96%87%E6%A1%A3/Rust%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89.html#_4-if-let" class="sidebar-link">4. if let</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="rust-入门教程-二-结构体和枚举"><a href="#rust-入门教程-二-结构体和枚举" class="header-anchor">#</a> Rust 入门教程（二）：结构体和枚举</h1> <h2 id="一、结构体的使用"><a href="#一、结构体的使用" class="header-anchor">#</a> 一、结构体的使用</h2> <h3 id="_1-定义和实例化-struct"><a href="#_1-定义和实例化-struct" class="header-anchor">#</a> 1. 定义和实例化 struct</h3> <p>例子：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">User</span> <span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    sign_in_count<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">,</span>
+    active<span class="token punctuation">:</span> <span class="token keyword">bool</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>需要注意的是，每个字段后面用逗号隔开，最后一个字段后面可以没有逗号。</p> <p>实例化例子：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">let</span> user1 <span class="token operator">=</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+        email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;cherry@gmail.com&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;cherry&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        active<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        sign_in_count<span class="token punctuation">:</span> <span class="token number">244</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>先创建 struct 实例，然后为每个字段指定值，无需按照声明的顺序指定。</p> <p>但是注意不能少指定字段。</p> <p>用点标记法取得结构体中的字段值，一旦 struct 的实例是可变的，那么实例中的所有字段都是可变的，不会同时既存在可变的字段又存在不可变的字段。</p> <p><strong>结构体作为函数的返回值</strong></p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">struct_build</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token class-name">User</span> <span class="token punctuation">{</span>
+        email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;cherry@gmail.com&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;cherry&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        active<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        sign_in_count<span class="token punctuation">:</span> <span class="token number">244</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>字段初始化简写</strong></p> <p>当字段名与字段值对应变量相同的时候，就可以使用字段初始化简写的方式：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">struct_build</span><span class="token punctuation">(</span>email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span> username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+    <span class="token class-name">User</span> <span class="token punctuation">{</span>
+        email<span class="token punctuation">,</span>
+        username<span class="token punctuation">,</span>
+        active<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        sign_in_count<span class="token punctuation">:</span> <span class="token number">244</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>struct 更新语法</strong></p> <p>当想基于某个 struct 实例创建一个新的实例时（新的实例中某些字段可能和原先相同，某些不同），若不使用 struct 更新语法，则是这样写：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">let</span> user2 <span class="token operator">=</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+        email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;paul@nba.cn&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;Chris Paul&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        active<span class="token punctuation">:</span> user1<span class="token punctuation">.</span>active<span class="token punctuation">,</span>
+        sign_in_count<span class="token punctuation">:</span> user1<span class="token punctuation">.</span>sign_in_count<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>而使用 struct 更新语法，则是这样写：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">let</span> user3 <span class="token operator">=</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+        email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;paul@nba.cn&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;Chris Paul&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token punctuation">..</span>user1
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><p>用 <code>..user1</code> 表示该实例中未赋值的其他字段和实例 <code>user1</code> 中的值一致。</p> <p><strong>Tuple Struct</strong></p> <p>可以定义类似 Tuple 的 Struct，叫做 Tuple Struct。Tuple struct 整体有个名，但里面的元素没有名</p> <p>适用：想给整个 tuple 起名，并让它不同于其它 tuple，而且又不需要给每个元素起名</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">Color</span><span class="token punctuation">(</span><span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Point</span><span class="token punctuation">(</span><span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token function">black</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> origin <span class="token operator">=</span> <span class="token class-name">Point</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>black 和 origin 是不同的类型，是不同 tuple struct 的实例</p> <p><strong>Unit-Like Struct(没有任何字段)</strong></p> <p>可以定义没有任何字段的 struct，叫做 <code>Unit-Like struct</code>，因为与 <code>()</code> 和单元类型类似，适用于需要在某个类型上实现某个trait，但是在里面又没有想要存储的数据</p> <p><strong>struct 数据所有权</strong></p> <p>再来看这个例子：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">User</span> <span class="token punctuation">{</span>
+    username<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    email<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+    sign_in_count<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">,</span>
+    active<span class="token punctuation">:</span> <span class="token keyword">bool</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这里的字段使用了 <code>String</code> 而不是 <code>&amp;str</code>，原因如下：</p> <ul><li>该 struct 实例拥有其所有的数据</li> <li>只要 struct 实例是有效的，那么里面的字段数据也是有效的 struct 里也可以存放引用，但这需要使用生命周期（以后讲）</li> <li>若字段为 <code>&amp;str</code>，当其有效作用域小于该实例的作用域，该字段被清理时，实例未清理，访问该字段属于悬垂引用（类似野指针）</li> <li>生命周期保证只要 struct 实例是有效的，那么里面的引用也是有效的</li> <li>如果 struct 里面存储引用，而不使用生命周期，就会报错</li></ul> <h3 id="_2-struct-例子"><a href="#_2-struct-例子" class="header-anchor">#</a> 2. struct 例子</h3> <p>一个简单的例子：计算长方形的面积</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> width <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> length <span class="token operator">=</span> <span class="token number">12</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> area <span class="token operator">=</span> <span class="token function">area_of_rectangle</span><span class="token punctuation">(</span>width<span class="token punctuation">,</span> length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;The Area of Rectangle is {}.&quot;</span><span class="token punctuation">,</span> area<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">area_of_rectangle</span><span class="token punctuation">(</span>width<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">,</span> length<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">usize</span> <span class="token punctuation">{</span>
+    width <span class="token operator">*</span> length
+<span class="token punctuation">}</span>
+</code></pre></div><p>上面这个例子很简单，但是长方形的长和宽没有联系起来，width 和 length 是两个分离的没有逻辑联系的变量，我们考虑用元组将其联系起来：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;The Area of Rectangle is {}.&quot;</span><span class="token punctuation">,</span> <span class="token function">area_of_rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">area_of_rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token keyword">u32</span><span class="token punctuation">,</span> <span class="token keyword">u32</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u32</span> <span class="token punctuation">{</span>
+    rect<span class="token number">.0</span> <span class="token operator">*</span> rect<span class="token number">.1</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>但是这样仿佛可读性变差了，我们再用结构体实现：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">Rectangle</span> <span class="token punctuation">{</span>
+    width<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+    length<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+        length<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;The Area of Rectangle is {}.&quot;</span><span class="token punctuation">,</span> <span class="token function">area_of_rectangle</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>rect<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">area_of_rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">Rectangle</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u32</span> <span class="token punctuation">{</span>
+    rect<span class="token punctuation">.</span>length <span class="token operator">*</span> rect<span class="token punctuation">.</span>width
+<span class="token punctuation">}</span>
+</code></pre></div><p>函数的参数使用结构体的借用，是为了不获得该实例的所有权，主函数在函数调用之后还可以继续使用该实例。</p> <p>此时我们输出实例 <code>rect</code>，会报这样的错误：<code>Rectangle doesn't implement std::fmt::Display</code>，即该结构体未实现 <code>Display</code> 这个 trait，而 Rust 中很多类型都是实现了这个 trait，才能将其在终端打印出来。因为结构体这种比标量类型更加复杂，打印的类型的可能性很多，因此需要用户自定义实现 <code>Display</code>。</p> <p>在报错的提示信息里，有个 note 提示我们可以使用 <code>{:?}</code> (或 <code>{:#?}</code>)来打印信息:</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;{:?}&quot;</span><span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>然而又出现了错误，这次的报错信息是：<code>Rectangle doesn't implement Debug</code>，显然 <code>Debug</code> 也是一种格式化方法，再看提示的 note：<code>add #[derive(Debug)] to Rectangle or manually impl Debug for Rectangle</code>，我们在结构体前添加 <code>#[derive(Debug)]</code>，使得该结构体派生与 <code>Debug</code> 这个 trait。</p> <p>最终完整的程序如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token attribute attr-name">#[derive(Debug)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Rectangle</span> <span class="token punctuation">{</span>
+    width<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+    length<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+        length<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;The Area of Rectangle is {}.&quot;</span><span class="token punctuation">,</span> <span class="token function">area_of_rectangle</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>rect<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;{:?}&quot;</span><span class="token punctuation">,</span> rect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">area_of_rectangle</span><span class="token punctuation">(</span>rect<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">Rectangle</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u32</span> <span class="token punctuation">{</span>
+    rect<span class="token punctuation">.</span>length <span class="token operator">*</span> rect<span class="token punctuation">.</span>width
+<span class="token punctuation">}</span>
+</code></pre></div><p>输出结果为：</p> <div class="language-rust extra-class"><pre class="language-rust"><code>➜  ~<span class="token operator">/</span><span class="token class-name">Code</span><span class="token operator">/</span>rust<span class="token operator">/</span>area_of_rectangle git<span class="token punctuation">:</span><span class="token punctuation">(</span>master<span class="token punctuation">)</span> ✗ cargo run
+   <span class="token class-name">Compiling</span> area_of_rectangle v0<span class="token number">.1</span><span class="token punctuation">.</span><span class="token number">0</span> <span class="token punctuation">(</span><span class="token operator">/</span>home<span class="token operator">/</span>cherry<span class="token operator">/</span><span class="token class-name">Code</span><span class="token operator">/</span>rust<span class="token operator">/</span>area_of_rectangle<span class="token punctuation">)</span>
+    <span class="token class-name">Finished</span> dev <span class="token punctuation">[</span>unoptimized <span class="token operator">+</span> debuginfo<span class="token punctuation">]</span> <span class="token function">target</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token keyword">in</span> <span class="token number">0</span><span class="token punctuation">.</span>25s
+     <span class="token class-name">Running</span> `target<span class="token operator">/</span>debug<span class="token operator">/</span>area_of_rectangle`
+<span class="token class-name">The</span> <span class="token class-name">Area</span> of <span class="token class-name">Rectangle</span> is <span class="token number">420</span><span class="token punctuation">.</span>
+<span class="token class-name">Rectangle</span> <span class="token punctuation">{</span> width<span class="token punctuation">:</span> <span class="token number">35</span><span class="token punctuation">,</span> length<span class="token punctuation">:</span> <span class="token number">12</span> <span class="token punctuation">}</span>
+</code></pre></div><p>若在输出格式中间加入一个 <code>#</code>，结构体输出将更加清晰：<code>println!(&quot;{:?}&quot;, rect);</code>，输出结果为：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    width<span class="token punctuation">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+    length<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_3-struct-方法"><a href="#_3-struct-方法" class="header-anchor">#</a> 3. struct 方法</h3> <p>方法和函数类似: fn关键字、名称、参数、返回值</p> <p>方法与函数不同之处:</p> <ul><li>方法是在 struct(或 enum、trait 对象）的上下文中定义</li> <li>第一个参数是 self，表示方法被调用的 struct 实例</li></ul> <p>上一节我们定义了计算长方形面积的函数，但是该函数只能计算长方形的函数，无法计算其他形状的面积，因此我们希望将函数与长方形这一结构体关联起来，例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">Rectangle</span> <span class="token punctuation">{</span>
+    width<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+    length<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">impl</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">area_of_rectangle</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u32</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>length <span class="token operator">*</span> <span class="token keyword">self</span><span class="token punctuation">.</span>width
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> rect <span class="token operator">=</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+        width<span class="token punctuation">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+        length<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;The Area of Rectangle is {}.&quot;</span><span class="token punctuation">,</span> rect<span class="token punctuation">.</span><span class="token function">area_of_rectangle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在impl块里定义方法，方法的第一个参数可以是 <code>&amp;self</code>，也可以<strong>获得其所有权</strong>或<strong>可变借用</strong>，和其他参数一样。这样写可以有更良好的代码组织。</p> <p><strong>方法调用的运算符</strong></p> <ul><li>C/C++ 中 <code>object-&gt;something()</code> 和 <code>(*object).something()</code> 一样，但是 Rust 没有 <code>→</code> 运算符</li> <li>Rust 会自动引用或解引用一在调用方法时就会发生这种行为</li> <li>在调用方法时，Rust 根据情况自动添加 <code>&amp;</code>、<code>&amp;mut</code> 或 <code>*</code>，以便 object 可以匹配方法的签名</li> <li>下面这两种写法效果相同
+<ul><li><code>p1.distance(&amp;p2);</code></li> <li><code>(&amp;p1).distance(&amp;p2);</code></li></ul></li></ul> <p><strong>方法参数</strong></p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">impl</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">area_of_rectangle</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u32</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>length <span class="token operator">*</span> <span class="token keyword">self</span><span class="token punctuation">.</span>width
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">fn</span> <span class="token function-definition function">can_hold</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">,</span> other<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token class-name">Rectangle</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">bool</span> <span class="token punctuation">{</span>
+        <span class="token keyword">self</span><span class="token punctuation">.</span>length <span class="token operator">&gt;</span> other<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> <span class="token keyword">self</span><span class="token punctuation">.</span>width <span class="token operator">&gt;</span> other<span class="token punctuation">.</span>width 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>关联函数</strong></p> <p>可以在 impl 块里定义不把 self 作为第一个参数的函数，它们叫关联函数（不叫方法）</p> <p>例如：<code>String::from()</code></p> <p>关联函数通常用于构造器，例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">Rectangle</span> <span class="token punctuation">{</span>
+    width<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+    length<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">impl</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">square</span><span class="token punctuation">(</span>size<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+        <span class="token class-name">Rectangle</span> <span class="token punctuation">{</span>
+            width<span class="token punctuation">:</span> size<span class="token punctuation">,</span>
+            length<span class="token punctuation">:</span> size<span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token class-name">Rectangle</span><span class="token punctuation">::</span><span class="token function">square</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><code>::</code> 符号</p> <ul><li>关联函数</li> <li>模块创建的命名空间</li></ul> <h2 id="二、枚举与模式匹配"><a href="#二、枚举与模式匹配" class="header-anchor">#</a> 二、枚举与模式匹配</h2> <h3 id="_1-枚举的定义"><a href="#_1-枚举的定义" class="header-anchor">#</a> 1. 枚举的定义</h3> <p>枚举允许我们列举所有可能的类型来定义一个类型</p> <p>例如 IP 地址，目前只有 IPv4 和 IPv6 两种类型，我们可以定义这样的枚举类型并使用：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">IpAddrKind</span> <span class="token punctuation">{</span>
+    <span class="token constant">V4</span><span class="token punctuation">,</span>
+    <span class="token constant">V6</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> four <span class="token operator">=</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">::</span><span class="token constant">V4</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> six <span class="token operator">=</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">::</span><span class="token constant">V6</span><span class="token punctuation">;</span>
+    <span class="token function">route</span><span class="token punctuation">(</span>four<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">route</span><span class="token punctuation">(</span>six<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">route</span><span class="token punctuation">(</span><span class="token class-name">IpAddrKind</span><span class="token punctuation">::</span><span class="token constant">V6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">route</span><span class="token punctuation">(</span>ip_kind<span class="token punctuation">:</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre></div><p>枚举的变体都位于标识符的命名空间下，使用两个冒号 <code>::</code> 进行分隔</p> <p>枚举类型是一种自定义的类型，因此它可以作为结构体里字段的类型，例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">IpAddrKind</span> <span class="token punctuation">{</span>
+    <span class="token constant">V4</span><span class="token punctuation">,</span>
+    <span class="token constant">V6</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">struct</span> <span class="token type-definition class-name">IpAddr</span> <span class="token punctuation">{</span>
+    kind<span class="token punctuation">:</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">,</span>
+    address<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> home <span class="token operator">=</span> <span class="token class-name">IpAddr</span> <span class="token punctuation">{</span>
+        kind<span class="token punctuation">:</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">::</span><span class="token constant">V4</span><span class="token punctuation">,</span>
+        address<span class="token punctuation">:</span> <span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;192.168.3.1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>将数据附加到枚举的变体中</strong></p> <p>上述的枚举类型我们可以改为：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">IpAddr</span> <span class="token punctuation">{</span>
+    <span class="token constant">V4</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token constant">V6</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>优点是：不需要使用 struct，<strong>每个变体可以拥有不同的类型以及相关联的数据量</strong>，例如</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">IpAddr</span> <span class="token punctuation">{</span>
+    <span class="token constant">V4</span><span class="token punctuation">(</span><span class="token keyword">u8</span><span class="token punctuation">,</span> <span class="token keyword">u8</span><span class="token punctuation">,</span> <span class="token keyword">u8</span><span class="token punctuation">,</span> <span class="token keyword">u8</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token constant">V6</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> home <span class="token operator">=</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">::</span><span class="token constant">V4</span><span class="token punctuation">(</span><span class="token number">192</span><span class="token punctuation">,</span> <span class="token number">168</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> loopback <span class="token operator">=</span> <span class="token class-name">IpAddrKind</span><span class="token punctuation">::</span><span class="token constant">V6</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;::1&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>标准库中的 IpAddr</strong></p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">struct</span> <span class="token type-definition class-name">lpv4Addr</span> <span class="token punctuation">{</span>
+    <span class="token comment">// --snip--</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">lpv6Addr</span> <span class="token punctuation">{</span>
+    <span class="token comment">// --snip--</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">enum</span> <span class="token type-definition class-name">lpAddr</span> <span class="token punctuation">{</span>
+    <span class="token constant">V4</span><span class="token punctuation">(</span>lpv4Addr<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token constant">V6</span><span class="token punctuation">(</span>lpv6Addr<span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>为枚举定义方法</strong></p> <p>也使用 <code>impl</code> 这个关键字</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">Message</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Quit</span><span class="token punctuation">,</span>
+    <span class="token class-name">Move</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token keyword">u32</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token class-name">Write</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token class-name">ChangeColor</span><span class="token punctuation">(</span><span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">,</span> <span class="token keyword">i32</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">impl</span> <span class="token class-name">Message</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">call</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> q <span class="token operator">=</span> <span class="token class-name">Message</span><span class="token punctuation">::</span><span class="token class-name">Quit</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> m <span class="token operator">=</span> <span class="token class-name">Message</span><span class="token punctuation">::</span><span class="token class-name">Move</span><span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">12</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> w <span class="token operator">=</span> <span class="token class-name">Message</span><span class="token punctuation">::</span><span class="token class-name">Write</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token class-name">Message</span><span class="token punctuation">::</span><span class="token class-name">ChangeColor</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-option-枚举"><a href="#_2-option-枚举" class="header-anchor">#</a> 2. Option 枚举</h3> <ul><li>定义于标准库中</li> <li>在 Prelude（预导入模块）中</li> <li>描述了某个值可能存在（某种类型）或不存在的情况</li></ul> <p><strong>Rust 中没有 NULL</strong></p> <p>其它语言中:</p> <ul><li>Null是一个值，它表示“没有值”</li> <li>一个变量可以处于两种状态：空值（null）、非空</li> <li>Null 引用：Billion Dollar Mistake</li></ul> <p>Null 的问题在于:当你尝试像使用非Null值那样使用Null值的时候，就会引起某种错误，但是 Null 的概念还是有用的：<strong>因某种原因而变为无效或缺失的值</strong></p> <p>Rust 中类似与 NULL 的概念的枚举：<code>Option&lt;T&gt;</code></p> <p>标准库中的定义：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">Option</span><span class="token operator">&lt;</span><span class="token class-name">T</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token class-name">T</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token class-name">None</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>它包含在预导入模块（Prelude）中，可以直接使用 <code>Option&lt;T&gt;</code>, <code>Some(T)</code>, <code>None</code>。例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> some_num <span class="token operator">=</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> some_string <span class="token operator">=</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token string">&quot;The String&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> absent_num<span class="token punctuation">:</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token keyword">i32</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token class-name">None</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>其中 <code>Some(3)</code> 编译器可以推断出来 <code>T</code> 类型为 <code>usize</code>，而 <code>None</code> 的话编译器无法推断出来，因此需要显式指定 <code>Option&lt;i32&gt;</code></p> <p>这种设计比 NULL 好在哪？</p> <p>因为 <code>Option&lt;T&gt;</code> 和 <code>T</code> 是不同的类型，不能将 <code>Option&lt;T&gt;</code> 当成 <code>T</code> 使用，例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">test02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> x<span class="token punctuation">:</span> <span class="token keyword">i8</span> <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> y<span class="token punctuation">:</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token keyword">i8</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> sum <span class="token operator">=</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样会报错，提示 <code>cannot add Option&lt;i8&gt; to i8</code>，表示两者不是同一个类型，若想使用 <code>Option&lt;T&gt;</code> 中的 <code>T</code>，则必须将其手动转换为 <code>T</code>，这种设计方式可以避免代码中 NULL 值泛滥的情况。</p> <h3 id="_3-match"><a href="#_3-match" class="header-anchor">#</a> 3. match</h3> <p><strong>强大的控制流运算符 match</strong></p> <p>允许一个值与一系列模式进行匹配，并执行匹配的模式对应的代码。模式可以是字面值、变量名、通配符...</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">enum</span> <span class="token type-definition class-name">Coin</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Penny</span><span class="token punctuation">,</span>
+    <span class="token class-name">Nickel</span><span class="token punctuation">,</span>
+    <span class="token class-name">Dime</span><span class="token punctuation">,</span>
+    <span class="token class-name">Quarter</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">value_in_cents</span><span class="token punctuation">(</span>coin<span class="token punctuation">:</span> <span class="token class-name">Coin</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u8</span> <span class="token punctuation">{</span>
+    <span class="token keyword">match</span> coin <span class="token punctuation">{</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Penny</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;Penny!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token number">1</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Nickel</span> <span class="token operator">=&gt;</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Dime</span> <span class="token operator">=&gt;</span> <span class="token number">10</span><span class="token punctuation">,</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Quarter</span> <span class="token operator">=&gt;</span> <span class="token number">25</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>绑定值的模式</strong></p> <p>匹配的分支可以绑定到被匹配对象的部分值，因此可以从 enum 变体中提取值，例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token attribute attr-name">#[derive(Debug)]</span>
+<span class="token keyword">enum</span> <span class="token type-definition class-name">USState</span> <span class="token punctuation">{</span>
+    <span class="token class-name">California</span><span class="token punctuation">,</span>
+    <span class="token class-name">Texas</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">enum</span> <span class="token type-definition class-name">Coin</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Penny</span><span class="token punctuation">,</span>
+    <span class="token class-name">Nickel</span><span class="token punctuation">,</span>
+    <span class="token class-name">Dime</span><span class="token punctuation">,</span>
+    <span class="token class-name">Quarter</span><span class="token punctuation">(</span><span class="token class-name">USState</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">value_in_cents</span><span class="token punctuation">(</span>coin<span class="token punctuation">:</span> <span class="token class-name">Coin</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token keyword">u8</span> <span class="token punctuation">{</span>
+    <span class="token keyword">match</span> coin <span class="token punctuation">{</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Penny</span> <span class="token operator">=&gt;</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Nickel</span> <span class="token operator">=&gt;</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Dime</span> <span class="token operator">=&gt;</span> <span class="token number">10</span><span class="token punctuation">,</span>  
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Quarter</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;State quarter from {:?}&quot;</span><span class="token punctuation">,</span> state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token number">25</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+        <span class="token comment">/* Coin::Quarter(state) 也可以这样展开写 */</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Quarter</span><span class="token punctuation">(</span><span class="token class-name">USState</span><span class="token punctuation">::</span><span class="token class-name">Texas</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;State quarter from {:?}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">USState</span><span class="token punctuation">::</span><span class="token class-name">Texas</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token number">25</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Quarter</span><span class="token punctuation">(</span><span class="token class-name">USState</span><span class="token punctuation">::</span><span class="token class-name">California</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;State quarter from {:?}&quot;</span><span class="token punctuation">,</span> <span class="token class-name">USState</span><span class="token punctuation">::</span><span class="token class-name">California</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token number">25</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">test03</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token class-name">Coin</span><span class="token punctuation">::</span><span class="token class-name">Quarter</span><span class="token punctuation">(</span><span class="token class-name">USState</span><span class="token punctuation">::</span><span class="token class-name">California</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;{}&quot;</span><span class="token punctuation">,</span> <span class="token function">value_in_cents</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p><strong>匹配 Option<T></T></strong></p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">test04</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> five <span class="token operator">=</span> <span class="token class-name">Some</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> six <span class="token operator">=</span> <span class="token function">plus_one</span><span class="token punctuation">(</span>five<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> none <span class="token operator">=</span> <span class="token function">plus_one</span><span class="token punctuation">(</span><span class="token class-name">None</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">plus_one</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token keyword">i32</span><span class="token operator">&gt;</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> <span class="token class-name">Option</span><span class="token operator">&lt;</span><span class="token keyword">i32</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">match</span> x <span class="token punctuation">{</span>
+        <span class="token class-name">None</span> <span class="token operator">=&gt;</span> <span class="token class-name">None</span><span class="token punctuation">,</span>
+        <span class="token class-name">Some</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token class-name">Some</span><span class="token punctuation">(</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>注意：match 匹配必须穷举所有的可能，可以使用 <code>_</code> 通配符替代其他没有列出的值</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">test05</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token number">0u8</span><span class="token punctuation">;</span>
+    <span class="token keyword">match</span> x <span class="token punctuation">{</span>
+        <span class="token number">1</span> <span class="token operator">=&gt;</span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;one&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token number">3</span> <span class="token operator">=&gt;</span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;three&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token number">5</span> <span class="token operator">=&gt;</span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;five&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        _ <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_4-if-let"><a href="#_4-if-let" class="header-anchor">#</a> 4. if let</h3> <p><code>if let</code> 是一种比 <code>match</code> 简单的控制流，他处理只关心一种匹配而忽略其他匹配的情况，它有更少的代码，更少的缩进，更少的模板代码，但是放弃了穷举的可能，可以把 <code>if let</code> 看作是 <code>match</code> 的语法糖。</p> <p><code>if let</code> 的格式如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">if</span> <span class="token keyword">let</span> pattern <span class="token operator">=</span> value <span class="token punctuation">{</span>
+    <span class="token comment">//TODO</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>他也可以搭配 <code>else</code> 例子如下：</p> <div class="language-rust extra-class"><pre class="language-rust"><code><span class="token keyword">fn</span> <span class="token function-definition function">test06</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> v <span class="token operator">=</span> <span class="token number">8u8</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">match</span> v <span class="token punctuation">{</span>
+        <span class="token number">3</span> <span class="token operator">=&gt;</span> <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;Three!&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        _ <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token number">3</span> <span class="token operator">=</span> v <span class="token punctuation">{</span>
+        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;Three&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token keyword">let</span> <span class="token number">5</span> <span class="token operator">=</span> v <span class="token punctuation">{</span>
+        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;Five!&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">&quot;Others!&quot;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/rust_camp_tutorial/assets/js/app.70f79682.js" defer></script><script src="/rust_camp_tutorial/assets/js/2.733019b2.js" defer></script><script src="/rust_camp_tutorial/assets/js/10.92bf8704.js" defer></script>
+  </body>
+</html>
