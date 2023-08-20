@@ -5,8 +5,10 @@
 ###  获取代码
 
 ```shell
-git clone 
+git clone --recursive https://github.com/DragonOS-Community/rust_camp_code.git
 ```
+
+教程版请切换curse-mini-redis分支
 
 ###  运行项目
 
