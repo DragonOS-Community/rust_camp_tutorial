@@ -14,4 +14,8 @@
 
 #### [Rust学习文档（七）](/Rust文档/Rust入门教程（七）/)
 
-#### [Rust学习文档（七）](/Rust文档/Mini-Redis教程/)
+#### [Rust学习文档（八）](/Rust文档/Rust入门教程（八）/)
+
+#### [Rust学习文档（九）](/Rust文档/Rust入门教程（九）/)
+
+#### [Mini-Redis教程](/Rust文档/Mini-Redis教程/)
