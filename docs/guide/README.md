@@ -20,4 +20,4 @@
 
 #### [Mini-Redis教程](/Rust文档/Mini-Redis教程/)
 
-#### [DNDK-控制台教程](/Rust文档/DNDK-控制台教程/)
+#### [DNDK-控制台教程](/Rust文档/DADK-控制台教程/)

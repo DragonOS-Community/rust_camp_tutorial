@@ -8,7 +8,7 @@ sidebar: auto
 
 本章意在介绍 DADK ——— 一个用于开发 DragonOS 应用的工具包，同时通过学习使用 dadk 控制台来创建配置文件。
 
-## 什么是DNDK
+## 什么是DADK
 
 DADK 是一个用于开发DragonOS应用的工具包，设计目的是为了让开发者能够更加方便的开发DragonOS应用。
 
@@ -26,14 +26,14 @@ DADK 是一个用于开发DragonOS应用的工具包，设计目的是为了让�
 
 ## 工作原理
 
-DADK使用(任务名，任务版本)来标识每个构建目标。当使用 DADK 构建 DragonOS 应用时，DADK 会根据用户的配置文件，自动完成以下工作：
+DADK 使用(任务名，任务版本)来标识每个构建目标。当使用 DADK 构建 DragonOS 应用时，DADK 会根据用户的配置文件，自动完成以下工作：
 
 解析配置文件，生成 DADK 任务列表
 根据 DADK 任务列表，进行拓扑排序。这一步会自动处理软件库的依赖关系。
 收集环境变量信息，并根据 DADK 任务列表，设置全局环境变量、任务环境变量。
 根据拓扑排序后的 DADK 任务列表，自动执行任务。
 DADK 与环境变量
-环境变量的设置是DADK能正常工作的关键因素之一，您可以在您的编译脚本中，通过引用环境变量，来获得其他软件库的编译信息。 这是使得您的应用能够自动依赖其他软件库的关键一步。
+环境变量的设置是 DADK 能正常工作的关键因素之一，您可以在您的编译脚本中，通过引用环境变量，来获得其他软件库的编译信息。 这是使得您的应用能够自动依赖其他软件库的关键一步。
 
 只要您的编译脚本能够正确地引用环境变量，DADK就能够自动处理软件库的依赖关系。
 
@@ -53,9 +53,9 @@ DADK会设置以下全局环境变量：
 
 举例：对于任务libc-0.1.0，其构建结果的全局环境变量名为DADK_BUILD_CACHE_DIR_LIBC_0_1_0。
 
-## DNDK 控制台
+## DADK 控制台
 
-### 获取DNDK
+### 获取DADK
 
 DADK 的最新版本为 v0.1.2,可前往 <https://github.com/DragonOS-Community/DADK> 中下载。
 
@@ -63,9 +63,9 @@ DADK 的最新版本为 v0.1.2,可前往 <https://github.com/DragonOS-Community/
 
 ### 补写代码
 
-DNDK 的基本组件位于 /DNDK-0.1.2/src/console/elements.rs 中，在运行控制台之前，需要对其基本组件进行补全，实现相关功能，实现过程中请参考已实现函数的相关代码和注释。
+DADK 的基本组件位于 /DADK-0.1.2/src/console/elements.rs 中，在运行控制台之前，需要对其基本组件进行补全，实现相关功能，实现过程中请参考已实现函数的相关代码和注释。
 
->练习1：实现位于/DNDK-0.1.2/src/console/elements.rs中列表选择器的 choose。
+>练习1：实现位于/DADK-0.1.2/src/console/elements.rs中列表选择器的 choose。
 
 ```rust
 /// # 读取用户的选择
@@ -93,7 +93,7 @@ pub fn choose(&self) -> Result<String, ConsoleError> {
 }
 ```
 
->练习2：实现位于/DNDK-0.1.2/src/console/elements.rs中的 parse_input。
+>练习2：实现位于/DADK-0.1.2/src/console/elements.rs中的 parse_input。
 
 ```rust
 /// # 解析用户的输入
@@ -124,7 +124,7 @@ fn parse_input(&self, input: String) -> Result<String, ConsoleError> {
 
 ### 运行控制台
 
-当补充完相关代码后，我们便可以运行DNDK。
+当补充完相关代码后，我们便可以运行DADK。
 
 ```shell
 cargo run
@@ -134,26 +134,26 @@ cargo run
 
 ![图片](../.vuepress/public/cargo_run.png)
 
-这样，DNDK就可以启动了
+这样，DADK就可以启动了
 
 ```shell
-dndk new
+dadk new
 ```
 
-![图片](../.vuepress/public/dndk_new.png)
+![图片](../.vuepress/public/dadk_new.png)
 
-## 利用 DNDK 创建配置文件
+## 利用 DADK 创建配置文件
 
-在我们开发应用程序的时候，可以手动创建编写 dndk 配置文件，也可以直接使用 DNDK控制台。
+在我们开发应用程序的时候，可以手动创建编写 dadk 配置文件，也可以直接使用 DADK控制台。
 
-使用命令`dndk new` 启动控制台
+使用命令`dadk new` 启动控制台
 
 按照提示输入任务的名称、版本号、描述
 
 ```shell
 Please input the [name] of the task: >> my_test
 Please input the [version] of the task: >> 0.1.0
-Please input the [description] of the task: >> testing dndk console
+Please input the [description] of the task: >> testing dadk console
 ```
 
 接着会提示你选择任务类型，可以选择新建和从预构建安装，这里我们选择 1
@@ -185,7 +185,7 @@ Please one or more items.
 Input more? >> (yes/no) 
 ```
 
-因为我们是使用 DNDK 构建 DragonOS应用，依赖于 relibc 开发，版本号 0.1.0
+因为我们是使用 DADK 构建 DragonOS应用，依赖于 relibc 开发，版本号 0.1.0
 
 ```shell
 Please input the [dependencies] of the task:
