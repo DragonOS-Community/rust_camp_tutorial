@@ -19,3 +19,5 @@
 #### [Rust学习文档（九）](/Rust文档/Rust入门教程（九）/)
 
 #### [Mini-Redis教程](/Rust文档/Mini-Redis教程/)
+
+#### [DNDK-控制台教程](/Rust文档/DADK-控制台教程/)
